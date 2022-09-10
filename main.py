@@ -1,10 +1,5 @@
-from enum import auto
-from struct import pack
-from tkinter import font
-import tkinter
 import speech_recognition as sr
 import os
-import sys
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import pyaudio
@@ -19,10 +14,6 @@ r = sr.Recognizer()
 
 
 def get_large_audio_transcription(path):
-    """
-    Splitting the large audio file into chunks
-    and apply speech recognition on each of these chunks
-    """
     # open the audio file - pydub
     sound = AudioSegment.from_wav(path)
     # split audio when silence
@@ -156,16 +147,14 @@ addTextBox.place(x=160, y=30)
 buttonSizew = 12
 buttonSizeh = 2
 
-Button(cursor="arrow")
-
 addButton = Button(root, text="Add", command=add, background="lightgrey", width=buttonSizew, height=buttonSizeh)
 addButton.place(x=10, y=10)
+
 
 readButton = Button(root, text="Read", command=read, background="lightgrey", width=buttonSizew, height=buttonSizeh)
 readButton.place(x=10, y=60, bordermode='ignore')
 
-restartButton = Button(root, text="Restart", command=inProgress, background="lightgrey", width=buttonSizew,
-                       height=buttonSizeh)
+restartButton = Button(root, text="Restart", command=inProgress, background="lightgrey", width=buttonSizew,height=buttonSizeh)
 restartButton.place(x=10, y=110)
 
 resetButton = Button(root, text="Reset", command=reset, background="lightgrey", width=buttonSizew, height=buttonSizeh)
